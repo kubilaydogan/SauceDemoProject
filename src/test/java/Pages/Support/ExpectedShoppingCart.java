@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// ********* not in use *********
 public class ExpectedShoppingCart {
-    // bunu kullanmadim henuz
 
     private static List<Map<String, String>> cart = new ArrayList<>();
 

@@ -3,16 +3,11 @@ package Pages;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.List;
-
+import static Utilities.Log.info;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginPage extends BasePage{
-    // Initialize Log4j logs
-    private static final Logger log = LoggerFactory.getLogger(LoginPage.class);
 
     private static By username = By.id("user-name");
     private static By password = By.id("password");
@@ -34,14 +29,9 @@ public class LoginPage extends BasePage{
 
         try{
             assertTrue(driver.findElement(By.xpath("//span[@class='title']")).getText().contentEquals("PRODUCTS"));
-            log.info("{} has logged in.", usernameValue);
-            System.out.printf("%s has logged in.\n", usernameValue);
+            info("\"%s\" has logged in.", usernameValue);
         }catch(NoSuchElementException e){
-            log.error("Login failed for {} !!", usernameValue);
-            System.out.printf("Login failed for %s !!\n", usernameValue);
+            info("Login failed for %s !!", usernameValue);
         }
     }
 }
-
-// XPATH: //input[@id='user-name']
-// CSS:   #user-name

@@ -4,9 +4,9 @@ import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 import java.util.Map;
+import static Utilities.Log.info;
 
 public class ProductsPage extends BasePage {
 
@@ -18,6 +18,7 @@ public class ProductsPage extends BasePage {
 
         Select select = new Select(dropdown);
         select.selectByVisibleText(sortType);
+        info("Products are sorted by: %s", sortType);
     }
 
     public static void addSingleItemToCart(String product)  {

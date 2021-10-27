@@ -10,8 +10,6 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import java.util.concurrent.TimeUnit;
 import static Utilities.FrameworkUtils.deleteOldLogs;
 import static Utilities.Log.*;

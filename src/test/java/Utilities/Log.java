@@ -1,5 +1,6 @@
 package Utilities;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,6 +36,10 @@ public class Log {
     //Info Level Logs
     public static void info (String message) {
         logger.info(message);
+    }
+
+    public static void info (String message,Object ...params) {
+        LogManager.getFormatterLogger().info(message, params);
     }
 
     //Warn Level Logs

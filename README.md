@@ -49,3 +49,12 @@ Pages and components definition can be found under [Pages](src/test/java/Pages) 
 [Logs](logs/automation.log) are created under logs package by using 
 * apache.logging.log4j
 * slf4j-api
+
+Examples for how to use logs: 
+```
+import static Utilities.Log.info;
+
+info("Driver has been closed.");
+or
+info("Products are sorted by: %s", sortType);
+```
