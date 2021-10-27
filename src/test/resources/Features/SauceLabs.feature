@@ -1,17 +1,17 @@
 @shopping
 Feature: Shopping Cart Functionality
 """
-        	Log into the site
-        	Sort the items
-        	Add two or more items to the shopping cart
-        	Visit the shopping cart
-            •	Assert that the items that you added are in the cart
-        	Remove an item and then continue shopping
-        	Add another item
-        	Checkout
-            •	Assert you are purchasing the correct items
-            •	Assert the total price
-            •	Finish checkout•
+   	Log into the site
+   	Sort the items
+   	Add two or more items to the shopping cart
+   	Visit the shopping cart
+        • Assert that the items that you added are in the cart
+   	Remove an item and then continue shopping
+   	Add another item
+   	Checkout
+         • Assert you are purchasing the correct items
+         • Assert the total price
+         • Finish checkout•
 """
 
   Scenario Outline: Validate shopping cart
