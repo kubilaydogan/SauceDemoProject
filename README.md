@@ -1,59 +1,51 @@
 # Sauce Demo Project
-## Başlıklar
+This framework is created by `Kubilay Dogan` for demo purposes.
 
-metinlerimiz
+## Main dependencies
 - Java 17
 - Selenium 3.141.59
-- Cucumber 7.0.0
+- Cucumber 6.11.0
+- Junit 5.8.1
 
-`gri alan`
 
-### Alt başlık
+## Supported reporting
+Framework provides 3 different reports:
+* [Extent reports](test-output/Spark/ExtentSpark.html)
+* [Pdf](test-output/Pdf/ExtentPdf.pdf)
+* [Cucumber HTML report](target/cucumber-html-reports/overview-features.html)
 
+To generate reports, use:
 ```
-{
-  daha geniş çaplı kodlamalar
-}
+mvn verify
 ```
-
-#### Java 17
-
-- JDK 17 yeni sürüm 
-- download [Maven](https://maven.apache.org/download.cgi) and add to PATH
-
-```bash
-bu şekilde yazarsak alan genişliyor
-```
-
 And the result should be as follows:
-```bash
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+```
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:07 min
-[INFO] Finished at: 2019-12-05T15:09:53+01:00
+[INFO] Total time:  8.484 s
+[INFO] Finished at: 2021-10-27T14:22:32-04:00
 [INFO] ------------------------------------------------------------------------
-```
 
+```
 
 ## Project structure
 
 #### Feature files
 
-Gherkin feature files are located in the [resources/features](src/test/resources/features) directory.
+Feature files are located in the [resources/Features](src/test/resources/Features) directory.
 
 #### Step classes
 
-Cucumber steps definitions are located in [StepDefinitions](src/test/java/StepDefinitions) package.
+Steps definitions are located in [StepDefinitions](src/test/java/StepDefinitions) package.
 
 #### Page Object Model
 
 Pages and components definition can be found under [Pages](src/test/java/Pages) package.
 
-#### Supported reporting
-
-- XML: target/cucumber-report.xml
-- JSON: target/cucumber-report.json
-- cukes: target/cukes/index.html
+## Logging
+[Logs](logs/automation.log) are created under logs package by using 
+* apache.logging.log4j
+* slf4j-api

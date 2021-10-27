@@ -40,7 +40,8 @@ public class Hooks {
             info("|          Environment : " + ConfigurationReader.getProperty("env"));
             info("|          Operating System : " + System.getProperty("os.name"));
             info("|          Browser: " + ConfigurationReader.getProperty("browser"));
-            info("|          URL: " + ConfigurationReader.getProperty("url"));
+//            info("|          URL: " + ConfigurationReader.getProperty("url"));
+            info("|          Author: " + ConfigurationReader.getProperty("author"));
             info("===============================================================\n");
             setUpIsDone = true;
         }
@@ -56,7 +57,7 @@ public class Hooks {
 
     }
 
-    @Before("not @hookless")            // or   @Before(order=2, value="@someTag")
+    // @Before("not @hookless")            // or   @Before(order=2, value="@someTag")
     public void beforeScenario(Scenario scenario) {
         byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         scenario.attach(screenshot, "image/png", scenario.getName());
