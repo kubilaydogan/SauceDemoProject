@@ -1,6 +1,7 @@
 package Pages;
 
 import Utilities.Driver;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
     static WebDriver driver = Driver.getDriver();
     static String landingPageURL = "https://www.saucedemo.com/";
+    static Faker faker = new Faker();
 
 
     public static void ClickOn(WebElement element){

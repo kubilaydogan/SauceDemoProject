@@ -9,14 +9,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class SauceLabs_StepDefs {
     static WebDriver driver = Driver.getDriver();
@@ -36,9 +30,27 @@ public class SauceLabs_StepDefs {
         ProductsPage.sortProducts(sortType);
     }
 
-    @And("user add {string}")
-    public void userAdd(String product) {
-        ProductsPage.addSingleItemToCart(product);
+//    @And("user add {string} to shopping cart")
+//    public void userAdd(String product) {
+//        ProductsPage.addSingleItemToCart(product);
+//    }
+//
+//    @When("user removes {string} from shopping cart")
+//    public void userRemovesFromShoppingCart(String product) {
+//        ShoppingCart.removeItem(product);
+//    }
+
+    @And("^user (add|removes) \"([^\"]*)\" (?:to|from) shopping cart$")
+    public void shoppingCart(String transaction, String product) {
+
+        switch (transaction) {
+            case "add":
+                ProductsPage.addSingleItemToCart(product);
+                break;
+            case "removes":
+                ShoppingCart.removeItem(product);
+                break;
+        }
     }
 
     @And("user add following items")
@@ -61,14 +73,9 @@ public class SauceLabs_StepDefs {
         ShoppingCart.verifyItems(dataTable);
     }
 
-    @When("user removes {string} from shopping cart")
-    public void userRemovesFromShoppingCart(String product) {
-        ShoppingCart.removeItem(product);
-    }
-
     @And("clicks on {string}")
-    public void clicksOn(String button) throws InterruptedException {
-        switch (button){
+    public void clicksOn(String button) {
+        switch (button) {
             case "Checkout":
                 ShoppingCart.ClickOn(driver.findElement(By.id("checkout")));
                 break;
@@ -76,6 +83,15 @@ public class SauceLabs_StepDefs {
                 ShoppingCart.ClickOn(driver.findElement(By.id("continue-shopping")));
                 break;
         }
-        Thread.sleep(4000);
+    }
+
+    @And("user enters checkout information")
+    public void userEntersCheckoutInformation(DataTable information)  {
+        ShoppingCart.fillCostomerInformation(information);
+    }
+
+    @Then("verify total sum in checkout overview")
+    public void verifyTotalSum() {
+        ShoppingCart.verifyTotalSum();
     }
 }

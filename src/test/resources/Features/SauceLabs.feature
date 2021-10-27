@@ -1,3 +1,4 @@
+@shopping
 Feature: Shopping Cart Functionality
 """
         	Log into the site
@@ -19,8 +20,8 @@ Feature: Shopping Cart Functionality
       | username | standard_user |
       | password | secret_sauce  |
     And user sort the item by "<sort_type>"
-    And user add "<item1>"
-    And user add "<item2>"
+    And user add "<item1>" to shopping cart
+    And user add "<item2>" to shopping cart
     And user add following items
       | item    |
       | <item3> |
@@ -33,9 +34,14 @@ Feature: Shopping Cart Functionality
       | <item4> |
     When user removes "<item3>" from shopping cart
     And clicks on "Continue Shopping"
-    And user add "<item5>"
+    And user add "<item5>" to shopping cart
     And user navigates to the shopping cart
     And clicks on "Checkout"
+    And user enters checkout information
+      | firstName | random |
+      | lastName  | Dogan  |
+      | zipCode   | random |
+    Then verify total sum in checkout overview
 
     Examples:
       | sort_type           | item1                   | item2               | item3                 | item4                    | item5             |
