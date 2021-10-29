@@ -46,3 +46,15 @@ Feature: Shopping Cart Functionality
     Examples:
       | sort_type           | item1                   | item2               | item3                 | item4                    | item5             |
       | Price (high to low) | Sauce Labs Bolt T-Shirt | Sauce Labs Backpack | Sauce Labs Bike Light | Sauce Labs Fleece Jacket | Sauce Labs Onesie |
+
+
+  Scenario: Verify remove button
+    Given user is on landing page
+    When user log into the site
+      | username | standard_user |
+      | password | secret_sauce  |
+    And user adds 1st item to shopping cart
+    And user adds 3rd item to shopping cart
+    And user removes 1st item from shopping cart
+    And wait for 5 seconds (for demo)
+    Then verify shopping cart contains 1 item

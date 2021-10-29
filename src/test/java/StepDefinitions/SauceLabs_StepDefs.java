@@ -86,7 +86,7 @@ public class SauceLabs_StepDefs {
     }
 
     @And("user enters checkout information")
-    public void userEntersCheckoutInformation(DataTable information)  {
+    public void userEntersCheckoutInformation(DataTable information) {
         ShoppingCart.fillCostomerInformation(information);
     }
 
@@ -94,4 +94,27 @@ public class SauceLabs_StepDefs {
     public void verifyTotalSum() {
         ShoppingCart.verifyTotalSum();
     }
+
+    @When("^user adds (.+) item to shopping cart$")
+    public void user_adds_item_to_shopping_cart(String itemNumber) {
+        ProductsPage.add_nthItemToCart(itemNumber);
+    }
+
+    @When("^user removes (.+) item from shopping cart$")
+    public void user_removes_item_from_shopping_cart(String itemNumber) {
+        ProductsPage.add_nthItemToCart(itemNumber);
+    }
+
+    @And("wait for {int} seconds \\(for demo)")
+    public void waitForSeconds(int second) throws InterruptedException {
+        Thread.sleep(second * 1000);
+    }
+
+    @Then("verify shopping cart contains {int} item")
+    public void verifyShoppingCartContainsItem(int expectedCount) {
+        ProductsPage.verifyCountOfItems(expectedCount);
+
+
+    }
+
 }
